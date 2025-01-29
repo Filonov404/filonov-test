@@ -234,7 +234,6 @@ $(function () {
             // .empty()
             // .append(JSON.stringify(data, null, 2));
             $('.response').append('<div class="sucscess"><img src="../images/content/sucscess.png" alt=""><div class="modal_title" style="text-align: center">Заявка принята!</div> <span style="font-size: 24px">И в ближайшее время мы с вами свяжемся</span></div>');
-
         });
     });
 });
