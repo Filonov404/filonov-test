@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.61 startup</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css?ver=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+<header class="header">
+    <div class="container">
+        <div class="header__row">
+            <picture class="header__logo">
+                <source srcset="./images/logotype/logo-mobile.svg" media="(max-width: 920px)">
+                <img src="./images/logotype/logo-desc.svg" alt="логотип 1.61 стартап">
+            </picture>
+            <nav class="nav">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="#Упаковка-СТАРТАПОВ" class="nav__link">Упаковка</a></li>
+                    <li class="nav__item"><a href="#Экспертная" class="nav__link">Помощь</a></li>
+                    <li class="nav__item"><a href="#Обучение" class="nav__link">Обучение</a></li>
+                    <li class="nav__item"><a href="#show_header" class="nav__link">База данных</a></li>
+                </ul>
+            </nav>
+            <button class="burger-btn" type="button" aria-label="Меню" onclick="window.burger.showModal()">
+                <img src="./images/icons/burger.svg" alt="Меню">
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="main">
+    <section class="showcase">
+        <div class="container">
+            <div class="showcase__wrapper">
+                <h1 class="showcase__title">КОНСАЛТИНГ<br> СТАРТАПОВ<br> ПОЛНОГО ЦИКЛА</h1>
+                <div class="showcase__info">
+                    <p class="showcase__slogan"><span>Лёгкий путь от идеи</span>
+                        <span>до получения финансирования</span></p>
+                    <p class="showcase__text">Пройди 10 шагов до полной упаковки стартапа и через 2 недели,
+                        гарантировано,
+                        получишь инвестиции!</p>
+                </div>
+                <div class="showcase__image">
+                    <img src="./images/content/Desktop_1.svg" alt="схема золотого сечения">
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="start">
+        <div class="container">
+            <div class="start__wrapper">
+                <h3 class="start__title">C чего начать?</h3>
+                <a href="#jsModal" class="jsModalTrigger start-btn">Получить бесплатную консультацию</a>
+            </div>
+        </div>
+    </div>
+    <section class="numbers">
+        <div class="container">
+            <div class="numbers__wrapper">
+                <h2 class="numbers__title">За нас говорят<br> цифры</h2>
+                <div class="numbers__row">
+                    <div class="numbers__column">
+                        <h3>$200 <span>млн</span></h3>
+                        <p>привлечено в проекты</p>
+                    </div>
+                </div>
+                <div class="numbers__row numbers__row--center">
+                    <div class="numbers__column">
+                        <h3>200+</h3>
+                        <p>стартапов получили<br> финансирование</p>
+                    </div>
+                    <div class="numbers__column">
+                        <h3>350+</h3>
+                        <p>сделано бизнес-<br>планов</p>
+                    </div>
+                </div>
+                <div class="numbers__row numbers__row--botton">
+                    <div class="numbers__column">
+                        <h3>50+</h3>
+                        <p>обзоров<br> проектов</p>
+                    </div>
+                    <div class="numbers__column">
+                        <h3>50+</h3>
+                        <p>присвоенно<br> рейтингов</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="ratio">
+        <div class="container">
+            <div class="ratio__wrapper">
+                <picture class="ratio__logo">
+                    <source srcset="./images/logotype/ratio-logo-small.svg" media="(max-width: 920px)">
+                    <img src="./images/logotype/ratio-logo.svg" alt="логотип 1.61 стартап">
+                </picture>
+                <div class="ratio__info">
+                    <blockquote class="ratio__blockquote">
+                        <p>«Золотое сечение стартапов - это не просто красивое название. Оно символизирует гармонию и
+                            структуру,
+                            которые необходимо
+                            соблюдать в процессе создания и масштабирования бизнеса. Как золотое сечение в искусстве и
+                            архитектуре
+                            помогает достичь
+                            идеальных пропорций, так и в мире стартапов есть свои правила и законы, которых нужно
+                            придерживаться
+                            чтобы привлечь
+                            инвестиции и успешно развивать.»</p>
+                    </blockquote>
+                    <p>Виктор Копылов,<br> основатель 1,61 стартап.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="about">
+        <div class="container">
+            <div class="about__wrapper">
+                <h2 class="about__title">1,61 стартап это:</h2>
+                <div class="about__inner">
+                    <div class="about__inner-flex">
+                        <div class="about__item about__item--installation">
+                            <h3 id="Упаковка-СТАРТАПОВ" class="about__item-title">Упаковка СТАРТАПОВ<br> под ключ</h3>
+                            <p class="about__item-undertitle">с нуля для гарантированного<br> привлечения инвестиций</p>
+                            <p class="about__item-text">У вас есть <span>ИДЕЯ</span> и вы готовы к её<br> быстрой
+                                реализации?</p>
+                            <p class="about__item-text">Упакуйте свой стартап для<br> гарантированного привлечения<br>
+                                инвестиций!
+                            </p>
+                            <a class="about__item-link jsModalTrigger" href="#jsModal">Подробнее</a>
+                        </div>
+                    </div>
+                    <div class="about__inner-flex">
+
+                        <div class="about__item about__item--help">
+                            <div class="half">
+                                <h3 class="about__item-title about__item-title--help">Помощь</h3>
+                            </div>
+                            <div class="half">
+                                <p class="about__item-text--small">с любым этапом дорожной<br> карты стартапа</p>
+                                <a class="about__item-link about__item-link--training jsModalTrigger" href="#jsModal">Подробнее</a>
+                            </div>
+                        </div>
+                        <div class="about__item about__item--training">
+                            <div class="half">
+                                <h3 class="about__item-title about__item-title--training">обучение</h3>
+                            </div>
+                            <div class="half">
+                                <p class="about__item-text--small">предпринимателей в онлайн школе 1.61 стартап навыкам
+                                    эффективного
+                                    управления стартапами</p>
+                                <a class="about__item-link about__item-link--training jsModalTrigger" href="#jsModal">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="consultation">
+        <div class="container">
+            <div class="consultation__wrapper">
+                <h3 class="consultation__title">C чего начать?</h3>
+                <a href="#jsModal" class="consultation__btn jsModalTrigger">Получить бесплатную консультацию</a>
+            </div>
+        </div>
+    </div>
+    <section class="packag">
+        <div class="container">
+            <div class="packag__wrapper dif-rad-block">
+                <div class="packag__title-wrapper">
+                    <div class="packag__title-inner">
+                        <h2 class="packag__title section-title"><span>Упаковка</span> стартапов<br>
+                            <span>под ключ</span></h2>
+                        <p class="packag__subtitle">Полная упаковка вашего стартапа — от идеи<br> до готового проекта
+                            для
+                            успешного<br> привлечения инвестиций.</p>
+                    </div>
+                    <picture class="packag__blockquote">
+                        <source srcset="./images/content/packag-small.png" media="(max-width: 568px)">
+                        <img src="./images/content/packag.png"
+                             alt="Эксперт - это человек, который больше не думает. Он ЗНАЕТ.">
+                    </picture>
+                </div>
+                <div class="packag__steps-wrapper">
+                    <h3 class="packag__steps-title">Три простых шага к успешному запуску стартапа</h3>
+                    <div class="packag__steps-items">
+                        <div class="packag__steps-item">
+                            <h4>1.</h4>
+                            <p>Аудит Идеи<br> и Стратегическое<br> Планирование</p>
+                        </div>
+                        <div class="packag__steps-item">
+                            <h4>2.</h4>
+                            <p>Подготовка<br> ключевых<br> документов</p>
+                        </div>
+                        <div class="packag__steps-item">
+                            <h4>3.</h4>
+                            <p>Получение<br> финансирования</p>
+                        </div>
+                    </div>
+                    <p class="packag__steps-text">В результате вы получаете полностью готовый для инвестирования
+                        стартап,
+                        который отвечает всем требованиям инвестиционных
+                        фондов и бизнес-ангелов.</p>
+                </div>
+                <div class="packag__scheme-wrapper">
+                    <h3 class="packag__scheme-title">Мы ЗНАЕМ, что делать:</h3>
+                    <img src="images/Group-6262.png" alt="" class="img-arr-content">
+                    <ul class="packag__scheme-list">
+                        <li class="packag__scheme-item">
+                            Аудит Идеи
+                        </li>
+                        <li class="packag__scheme-item">
+                            План Упаковки
+                        </li>
+                        <li class="packag__scheme-item">
+                            One Page
+                        </li>
+                        <li class="packag__scheme-item">
+                            Pitch Deck
+                        </li>
+                        <li class="packag__scheme-item">
+                            White Paper
+                        </li>
+                        <li class="packag__scheme-item">
+                            ТЭО
+                        </li>
+                        <li class="packag__scheme-item">
+                            Бизнес план
+                        </li>
+                        <li class="packag__scheme-item">
+                            Legal Opinion
+                        </li>
+                        <li class="packag__scheme-item">
+                            Юр БЛОК
+                        </li>
+                        <li class="packag__scheme-item">
+                            Получение<br> Финансирования
+                        </li>
+                    </ul>
+                    <p class="packag__scheme-text">Не упустите шанс реализовать свой проект!<br> Нажмите кнопку ниже, чтобы
+                        получить
+                        индивидуальное предложение по упаковке
+                        вашего стартапа.
+                    </p>
+                    <div class="packag__banner">
+                        <p class="packag__banner-text">Актуальная база из 3 000 инвест фондов В ПОДАРОК!</p>
+                        <a href="#jsModal" class="packag__banner-btn jsModalTrigger">Получить аудит стартапа
+                            бесплатно</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="help">
+        <div class="container">
+            <div class="help__wrapper dif-rad-block">
+                <div class="help__header">
+                    <h2 id="Экспертная" class="help__title section-title">Экспертная <span>помощь</span> в<br> реализации <span>любого
+                этапа</span><br> по пути к получению<br> инвестиций</h2>
+                    <picture class="help__blockquote">
+                        <source srcset="./images/content/help-small.png" media="(max-width: 1120px)">
+                        <img src="./images/content/help.png"
+                             alt="Если вы не видите, куда идёте, спросите кого-нибудь, кто бывал там раньше.">
+                    </picture>
+                </div>
+                <div class="help__slider">
+                    <div class="swiper mySwiper swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide help-slide help-slide-01">
+                                <div class="swiper-slide__wrapper">
+                                    <h3 class="swiper-slide__title">One<br> Page</h3>
+                                    <p class="swiper-slide__text">
+                                        Концепт стартапа на одной странице с преимуществами и доказательством
+                                        жизнеспособности. Необходим
+                                        для первого касания с
+                                        инвестором.
+                                    </p>
+                                    <a href="#jsModal" class="swiper-slide__btn jsModalTrigger">Купить</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide help-slide help-slide-02">
+                                <div class="swiper-slide__wrapper">
+                                    <h3 class="swiper-slide__title">Краудин-<br>вестинг</h3>
+                                    <p class="swiper-slide__text">
+                                        Сопровождение стартапа
+                                        в выходе на краудинвестин
+                                        говые площадки и получение инвестиций.
+                                    </p>
+                                    <a href="#jsModal" class="swiper-slide__btn jsModalTrigger">Купить</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide help-slide help-slide-03">
+                                <div class="swiper-slide__wrapper">
+                                    <h3 class="swiper-slide__title">White<br> Paper</h3>
+                                    <p class="swiper-slide__text">
+                                        Уникальность проекта и
+                                        его техническая реализация.
+                                        Планы масштабирования,
+                                        правовые нормы и аспекты.
+                                    </p>
+                                    <a href="#jsModal" class="swiper-slide__btn jsModalTrigger">Купить</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide help-slide help-slide-04">
+                                <div class="swiper-slide__wrapper">
+                                    <h3 class="swiper-slide__title">ТЭО</h3>
+                                    <p class="swiper-slide__text">
+                                        Технико экономическое обоснование позволяет инвесторам определить, стоит ли
+                                        вкладывать деньги в
+                                        предлагаемый проект.
+                                    </p>
+                                    <a href="#jsModal" class="swiper-slide__btn jsModalTrigger">Купить</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide help-slide help-slide-05">
+                                <div class="swiper-slide__wrapper">
+                                    <h3 class="swiper-slide__title">Бизнес<br> План</h3>
+                                    <p class="swiper-slide__text">
+                                        Всеобъемлющий документ на 100+ страниц, включающий подробный план развития
+                                        бизнеса на 5 лет.
+                                    </p>
+                                    <a href="#jsModal" class="swiper-slide__btn jsModalTrigger">Купить</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide help-slide help-slide-06">
+                                <div class="swiper-slide__wrapper">
+                                    <h3 class="swiper-slide__title">Legal<br> Opinion</h3>
+                                    <p class="swiper-slide__text">
+                                        Юридическое обоснование
+                                        жизнеспособности проекта.
+                                        Юридическая структура и юридические риски.
+                                    </p>
+                                    <a href="#jsModal" class="swiper-slide__btn jsModalTrigger">Купить</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide help-slide help-slide-07">
+                                <div class="swiper-slide__wrapper">
+                                    <h3 class="swiper-slide__title">Аудит<br> и План</h3>
+                                    <p class="swiper-slide__text">
+                                        Доскональный разбор стартапа и выработка пошагового плана достижения желаемого
+                                        РЕЗУЛЬТАТА
+                                    </p>
+                                    <a href="#jsModal" class="swiper-slide__btn jsModalTrigger">Купить</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide help-slide help-slide-08">
+                                <div class="swiper-slide__wrapper">
+                                    <h3 class="swiper-slide__title">Pitch<br> Deck</h3>
+                                    <p class="swiper-slide__text">
+                                        Второе касание с инвестором. Какие проблемы и как решает стартап, анализ рынка и
+                                        конкурентов, фин
+                                        план, экономическая
+                                        модель и команда.
+                                    </p>
+                                    <a href="#jsModal" class="swiper-slide__btn jsModalTrigger">Купить</a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide help-slide help-slide-09">
+                                <div class="swiper-slide__wrapper">
+                                    <h3 class="swiper-slide__title">База<br> Фондов</h3>
+                                    <p class="swiper-slide__text">
+                                        Актуальная база из 3 000 + фондов и инвестиционных компаний и помощь в
+                                        правильном обращении к ним.
+                                    </p>
+                                    <a href="#jsModal" class="swiper-slide__btn jsModalTrigger">Купить</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-button-next">
+                        </div>
+                        <div class="swiper-button-prev">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="training">
+        <div class="container">
+            <div class="training__wrapper dif-rad-block">
+                <div class="training__header">
+                    <h2 id="Обучение" class="training__title section-title"><span>Обучение</span> инструментам<br> <span>создания и управления</span><br>
+                        современного бизнеса</h2>
+                    <picture class="training__blockquote">
+                        <source srcset="./images/content/training-q-small.png" media="(max-width: 568px)">
+                        <img src="./images/content/training-q-big.png"
+                             alt="Обучение - это двигатель профессионального успеха.">
+                    </picture>
+                </div>
+                <div class="training__body">
+                    <div class="training__item training__item--book">
+                        <picture class="training__item-image">
+                            <img src="./images/content/book.jpg" alt="книга стартап 1.61">
+                        </picture>
+                        <button class="training__item--book-btn" type="button">Книга</button>
+                    </div>
+                    <div class="training__item training__item--webinars">
+                        <button class="training__item--webinars-btn" type="button">Вебинары</button>
+                    </div>
+                    <div class="training__item training__item--courses">
+                        <div class="training__item-item">
+                            <button class="training__item--courses-btn" type="button">Курсы</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="banner">
+        <div class="container">
+            <div class="banner__wrapper">
+                <h2 class="banner__title">Есть <span>ИДЕЯ</span>, готов <span>ДЕЙСТВОВАТЬ</span>,<br> но <span
+                        class="green">НЕ ЗНАЕШЬ</span> с чего <span>НАЧАТЬ?</span></h2>
+                <p>Получи бесплатную консультацию и узнай кратчайший путь к получению инвестиций и реализации своего
+                    проекта!</p>
+                <a href="#jsModal" class="banner__btn jsModalTrigger">Получить бесплатную консультацию</a>
+            </div>
+        </div>
+    </div>
+    <section class="founder">
+        <div class="container">
+            <div class="founder__wrapper">
+                <div class="founder__header">
+                    <h2 class="founder__title section-title">Основатель</h2>
+                    <picture class="founder__blockquote">
+                        <source srcset="./images/content/founder-small.png" media="(max-width: 800px)">
+                        <img src="./images/content/founder.png"
+                             alt="Грамм собственного опыта стоит дороже тонны чужих наставлений">
+                    </picture>
+                </div>
+                <div class="founder__body">
+                    <picture class="founder__image">
+                        <source srcset="./images/content/victor-small.jpg" media="(max-width: 768px)">
+                        <img src="./images/content/victor.jpg" alt="Виктор Копылов">
+                    </picture>
+                    <div class="founder__info">
+                        <h3 class="section-title">Виктор<br> Копылов</h3>
+                        <p class="founder__subtitle">основатель 1.61 Стартап</p>
+                        <p class="founder__text">Я не понаслышке знаю, что значит проходить все этапы — от генерации
+                            идеи до её
+                            реализации, поиска инвесторов и запуска
+                            проекта. В своей карьере я помогал компаниям выходить на IPO, сопровождал стартапы на всех
+                            стадиях их
+                            развития и
+                            привлекал инвестиции из самых разных источников — от венчурных фондов до частных инвесторов.
+                            И всё это
+                            время я
+                            сталкивался с одними и теми же вопросами от основателей: как правильно подготовить проект?
+                            Как
+                            представить его
+                            инвесторам? Что важно для фондов? Где искать деньги и как их привлечь?
+                        </p>
+                        <div class="founder__info-image">
+                            <picture>
+                                <source srcset="./images/logotype/founder-logo-small.svg" media="(max-width: 800px)">
+                                <img src="./images/logotype/founder-logo.svg" alt="1.61 стартап">
+                            </picture>
+                            <picture>
+                                <source srcset="images/logotype/si-small.svg" media="(max-width: 800px)">
+                                <img src="images/logotype/si.svg" alt="Абстрактное изображение">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="show">
+        <div class="container">
+            <div class="show__wrapper">
+                <div class="show__header">
+                    <div class="show__header-info">
+                        <h2 id="show_header">Стань участником YouTube-<br> шоу "Стартап 1.61"</h2>
+                        <p>Хотите, чтобы ваш проект попал на профессиональный разбор в нашем YouTube-шоу?</p>
+                        <p><span>Мы готовы рассмотреть вашу заявку!</span></p>
+                        <p>Участвуя, вы получите не только ценное мнение экспертов, но и продвижение на наших
+                            платформах.</p>
+                    </div>
+                    <picture class="show__header-image">
+                        <source srcset="./images/content/show-small.jpg" media="(max-width: 1120px)">
+                        <img src="./images/content/show.jpg" alt="мужчина за столом" style="width: 100%;">
+                    </picture>
+                </div>
+                <div class="show__body">
+                    <details class="show__accordion">
+                        <summary class="show__accordion-header">
+                            <h3 class="show__accordion-title">Что вас ждет</h3>
+                            <img class="show__accordion-initializer" src="./images/icons/arrow-down.svg"
+                                 alt="кнопка стрелка">
+                        </summary>
+                        <div class="show__accordion-body">
+                            <ul class="show__list">
+                                <li class="show__item">
+                                    <h4 class="show__item-title">Профессиональный<br> разбор</h4>
+                                    <p class="show__item-text">Наши эксперты детально проанализируют ваш проект,
+                                        разберут его
+                                        преимущества и недостатки, а также дадут рекомендации для
+                                        улучшения.
+                                    </p>
+                                </li>
+                                <li class="show__item">
+                                    <h4 class="show__item-title">Online<br> эфир</h4>
+                                    <p class="show__item-text">Мы проведем интервью с вами и обсудим ваш проект в прямом
+                                        эфире. Все это
+                                        будет транслироваться на наших социальных
+                                        платформах, включая YouTube и другие медиа-каналы.
+                                    </p>
+                                </li>
+                                <li class="show__item">
+                                    <h4 class="show__item-title">Рейтинг<br> и отзывы</h4>
+                                    <p class="show__item-text">По итогам разбора вашему проекту будет присвоен рейтинг.
+                                        Мы также оставим
+                                        подробные отзывы, которые помогут вам
+                                        продвинуться в привлечении инвесторов.
+                                    </p>
+                                </li>
+                                <li class="show__item">
+                                    <h4 class="show__item-title">Социальное<br> продвижение</h4>
+                                    <p class="show__item-text">Ваш проект будет представлен на нашей платформе и
+                                        социальных сетях, что
+                                        увеличит его видимость и поможет привлечь
+                                        внимание потенциальных партнеров и клиентов.
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="show__accordion">
+                        <summary class="show__accordion-header">
+                            <h3 class="show__accordion-title">Требования для участия</h3>
+                            <img class="show__accordion-initializer" src="./images/icons/arrow-down.svg"
+                                 alt="кнопка стрелка">
+                        </summary>
+                        <div class="show__accordion-body">
+                            <div class="show__inner">
+                                <div class="show__inner-item">
+                                    <h4 class="show__item-title">Полная документация проекта</h4>
+                                    <p class="show__item-text">Для рассмотрения вашей заявки, необходимо предоставить
+                                        подробный пакет
+                                        документов о вашем
+                                        проекте. Это может включать
+                                        бизнес-план, технические обоснования, pitch deck, white paper и другие
+                                        материалы, которые раскроют
+                                        суть и потенциал
+                                        вашего проекта.
+                                    </p>
+                                </div>
+                                <div class="show__application">
+                                    <div class="show__inner-item">
+                                        <h4 class="show__item-title">Заполнение заявки</h4>
+                                        <p class="show__item-text">Заполните форму на сайте, где подробно укажите
+                                            информацию о себе и
+                                            проекте. Наша команда
+                                            свяжется с вами, чтобы уточнить
+                                            детали и договориться о съемках.
+                                        </p>
+                                    </div>
+                                    <div class="show__inner-item">
+                                        <h5>Как подать заявку:</h5>
+                                        <ol class="show__application-list">
+                                            <li class="show__application-item">
+                                                Подготовьте все необходимые документы и отправьте их через нашу форму на
+                                                сайте.
+                                            </li>
+                                            <li class="show__application-item">
+                                                Ожидайте подтверждения от нашей команды. После рассмотрения документов
+                                                мы свяжемся с вами для
+                                                дальнейших шагов.
+                                            </li>
+                                            <li class="show__application-item">
+                                                После подтверждения мы согласуем удобное время для эфира и записи
+                                                интервью.
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </details>
+                    <p class="show__text">Присоединяйтесь к "Стартап 1.61" и получите уникальную возможность прокачать
+                        свой
+                        проект под руководством экспертов!</p>
+                    <a href="#jsModal" class="show__btn jsModalTrigger" type="button">Участвовать</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__wrapper">
+            <picture class="footer__logo">
+                <source srcset="./images/logotype/logo-mobile.svg" media="(max-width: 920px)">
+                <img src="./images/logotype/logo-footer-desc.svg" alt="логотип 1.61 стартап">
+            </picture>
+            <div class="footer__inner">
+                <nav class="footer__nav">
+                    <ul class="footer__nav-list">
+                        <li class="footer__nav-item"><a href="#!" class="footer__nav-link">Путь “золотого сечения”</a>
+                        </li>
+                        <li class="footer__nav-item"><a href="#!" class="footer__nav-link">Упаковка</a></li>
+                        <li class="footer__nav-item"><a href="#!" class="footer__nav-link">Помощь</a></li>
+                        <li class="footer__nav-item"><a href="#!" class="footer__nav-link">Обучение</a></li>
+                        <li class="footer__nav-item"><a href="#!" class="footer__nav-link">Шоу “Расчленёнка 1.61”</a>
+                        </li>
+                    </ul>
+                </nav>
+                <address class="address">Si14 AG Aktiengesellschaft "Si14 AG",<br>
+                    Si14 AG Law AG, Baarerstrasse 11,<br>
+                    6300 Zug, Schweiz, und Bankdaten:<br>
+                    IBAN: ME25 5804 20000000 1400 14,<br>
+                    BIC/Swift der Bank: AZMNMEPGXXX,<br>
+                    Bank: ADRIATIC BANK AD PODGORICA
+                </address>
+            </div>
+        </div>
+        <div class="copyright">1,61 startap,
+            <time datetime="2024">2024</time>
+        </div>
+    </div>
+</footer>
+
+<dialog class="burger" id="burger" aria-label="Меню">
+    <form class="burger__close-wrapper" method="dialog">
+        <img src="./images/logotype/logo-mobile.svg" alt="логотип 1.61 стартап">
+        <button class="burger__close-btn">
+            <img src="./images/icons/cross.svg" alt="закрыть">
+        </button>
+    </form>
+    <nav class="burger__menu">
+        <ul class="burger__menu-list">
+            <li class="burger__menu-item"><a href="#!" class="burger__menu-link"
+                                             onclick="window.burger.close()">Упаковка</a></li>
+            <li class="burger__menu-item"><a href="#!" class="burger__menu-link"
+                                             onclick="window.burger.close()">Обучение</a></li>
+            <li class="burger__menu-item"><a href="#!" class="burger__menu-link" onclick="window.burger.close()">База
+                данных</a></li>
+            <li class="burger__menu-item"><a href="#!" class="burger__menu-link"
+                                             onclick="window.burger.close()">Помощь</a>
+            </li>
+            <li class="burger__menu-item">
+                <button class="burger__menu-btn" type="button" onclick="window.burger.close()">Получить бесплатную
+                    консультацию
+                </button>
+            </li>
+        </ul>
+    </nav>
+</dialog>
+
+
+<div id="jsModal" class="modal">
+    <div class="modal__overlay jsOverlay"></div>
+    <div class="modal__container">
+
+        <button class="modal__close jsModalClose">&#10005;</button>
+        <div class="form">
+
+
+            <form class="form">
+                <div class="form-inner">
+                    <div class="modal_title">Заполните форму</div>
+                    <div class="input-container ic1">
+                        <input id="firstname" class="input required" type="text" placeholder=" " name="name"/>
+                        <div class="cut"></div>
+                        <label for="firstname" class="placeholder">ФИО</label>
+                    </div>
+                    <div class="input-container ic2">
+                        <input id="lastname" class="input required" type="email" placeholder=" " name="email"/>
+                        <div class="cut"></div>
+                        <label for="lastname" class="placeholder">e-mail</label>
+                    </div>
+                    <div class="input-container ic2">
+                        <input id="tel" class="input required" type="tel" placeholder=" " name="tel"/>
+                        <div class="cut cut-short"></div>
+                        <label for="tel" class="placeholder">Телефон</label>
+                    </div>
+
+                    <span class="text-af-in">И в ближайшее время мы с вами свяжемся</span>
+                    <div class="buy-bl">
+                        <button type="submit" class="consultation__btn toggle-disabled" disabled>Купить</button>
+                    </div>
+                </div>
+
+                <div class="response"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+
+</html>
