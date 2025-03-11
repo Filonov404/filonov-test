@@ -1,81 +1,50 @@
-new Swiper(".swiper-container", {
-    spaceBetween: 1,
-    slidesPerView: 3,
-    centeredSlides: true,
-    roundLengths: true,
-    loop: true,
-    navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-    },
-    breakpoints: {
-        320: {
-            slidesPerView: 2.001
-        },
-        991: {
-            slidesPerView: 3
-        }
-    }
-});
-
-
+document.addEventListener('DOMContentLoaded', initSwiper);
 /* This script supports IE9+ */
-(function () {
+(() => {
     /* Opening modal window function */
-    function openModal() {
+    const openModal = () => {
         /* Get trigger element */
-        var modalTrigger = document.getElementsByClassName('jsModalTrigger');
-
+        const modalTrigger = document.getElementsByClassName('jsModalTrigger');
         /* Set onclick event handler for all trigger elements */
-        for (var i = 0; i < modalTrigger.length; i++) {
-            modalTrigger[i].onclick = function () {
-                var target = this.getAttribute('href').substr(1);
-                var modalWindow = document.getElementById(target);
-
+        for (let i = 0; i < modalTrigger.length; i++) {
+            modalTrigger[i].onclick = function() {
+                const target = this.getAttribute('href').substr(1);
+                const modalWindow = document.getElementById(target);
                 modalWindow.classList ? modalWindow.classList.add('open') : modalWindow.className += ' ' + 'open';
             }
         }
-    }
-
-    function closeModal() {
+    };
+    const closeModal = () => {
         /* Get close button */
-        var closeButton = document.getElementsByClassName('jsModalClose');
-        var closeOverlay = document.getElementsByClassName('jsOverlay');
-
+        const closeButton = document.getElementsByClassName('jsModalClose');
+        const closeOverlay = document.getElementsByClassName('jsOverlay');
         /* Set onclick event handler for close buttons */
-        for (var i = 0; i < closeButton.length; i++) {
-            closeButton[i].onclick = function () {
-                var modalWindow = this.parentNode.parentNode;
-
+        for (let i = 0; i < closeButton.length; i++) {
+            closeButton[i].onclick = function() {
+                const modalWindow = this.parentNode.parentNode;
                 modalWindow.classList ? modalWindow.classList.remove('open') : modalWindow.className = modalWindow.className.replace(new RegExp('(^|\\b)' + 'open'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
             }
         }
-
         /* Set onclick event handler for modal overlay */
-        for (var i = 0; i < closeOverlay.length; i++) {
-            closeOverlay[i].onclick = function () {
-                var modalWindow = this.parentNode;
-
+        for (let i = 0; i < closeOverlay.length; i++) {
+            closeOverlay[i].onclick = function() {
+                const modalWindow = this.parentNode;
                 modalWindow.classList ? modalWindow.classList.remove('open') : modalWindow.className = modalWindow.className.replace(new RegExp('(^|\\b)' + 'open'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
             }
         }
-
-    }
-
+    };
     /* Handling domready event IE9+ */
-    function ready(fn) {
+    const ready = (fn) => {
         if (document.readyState != 'loading') {
             fn();
         } else {
             document.addEventListener('DOMContentLoaded', fn);
         }
-    }
-
+    };
     /* Triggering modal window function after dom ready */
     ready(openModal);
     ready(closeModal);
-}());
-
+})();
 let phoneInput = document.querySelectorAll('input[type="tel"]');
 phoneInput.forEach(input => {
     input.addEventListener('input', telMask);
@@ -85,21 +54,17 @@ phoneInput.forEach(input => {
     input.addEventListener('blur', telBlur);
 })
 let defaultPlaceholder;
-
 function telFocus() {
     defaultPlaceholder = this.placeholder;
     if (this.value.length < 1) {
         this.placeholder = "+7(___)-___-__-__";
     }
 }
-
 function telBlur() {
     this.placeholder = defaultPlaceholder;
 }
-
 let numberType;
-
-function telMask(e) {
+const telMask = (e) => {
     let inpNumValue = getInputNumbers(this);
     let formatedInputValue = "";
     let selectionStart = this.selectionStart;
@@ -107,7 +72,6 @@ function telMask(e) {
         if (e.data && /\D/g.test(e.data)) {
             this.value = inpNumValue;
         }
-
         return;
     }
     if (!inpNumValue) {
@@ -140,12 +104,8 @@ function telMask(e) {
     }
     this.value = formatedInputValue;
 }
-
-function getInputNumbers(input) {
-    return input.value.replace(/\D/g, "")
-}
-
-function telKeyDown(e) {
+const getInputNumbers = (input) => input.value.replace(/\D/g, "");
+const telKeyDown = (e) => {
     if (numberType == "russian") {
         let selectionStart = this.selectionStart;
         let selectionEnd = this.selectionEnd;
@@ -164,8 +124,7 @@ function telKeyDown(e) {
         }
     }
 }
-
-function telPaste(e) {
+const telPaste = (e) => {
     if (numberType == "russian") {
         let pasted = e.clipboardData || window.clipboardData;
         inpNumValue = getInputNumbers(this);
@@ -177,64 +136,53 @@ function telPaste(e) {
         }
     }
 }
-
-
-$(document).on('change keyup', '.required', function (e) {
-    let Disabled = true;
-    $(".required").each(function () {
-        let value = this.value
-        if ((value) && (value.trim() != '')) {
-            Disabled = false
-        } else {
-            Disabled = true
-            return false
-        }
+document.addEventListener('DOMContentLoaded', () => {
+    const requiredFields = document.querySelectorAll('.required');
+    const submitButton = document.querySelector('.toggle-disabled');
+    const checkRequiredFields = () => {
+        const isDisabled = Array.from(requiredFields).some(field => !field.value.trim());
+        submitButton.disabled = isDisabled;
+    };
+    requiredFields.forEach(field => {
+        field.addEventListener('change', checkRequiredFields);
+        field.addEventListener('keyup', checkRequiredFields);
     });
-
-    if (Disabled) {
-        $('.toggle-disabled').prop("disabled", true);
-    } else {
-        $('.toggle-disabled').prop("disabled", false);
-    }
-})
-
-
-$(function () {
-    var button = $("button");
-    var name = $("input[name=name]");
-
-    name.keyup(function () {
-        if (name.val().length > 0) {
-            button.addClass('active');
-        } else {
-            button.removeClass('active');
-        }
+    checkRequiredFields(); // Initial check on page load
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const button = document.querySelector("button");
+    const nameInput = document.querySelector("input[name=name]");
+    nameInput.addEventListener('keyup', () => {
+        button.classList.toggle('active', nameInput.value.length > 0);
     });
-
-    $("form").submit(function (event) {
+    const form = document.querySelector("form");
+    form.addEventListener("submit", (event) => {
         event.preventDefault();
-
         //get the form data
-        var formData = {
-            name: $("input[name=name]").val(),
-            email: $("input[name=email]").val(),
-            tel: $("input[name=tel]").val()
+        const formData = {
+            name: form.querySelector("input[name=name]").value,
+            email: form.querySelector("input[name=email]").value,
+            tel: form.querySelector("input[name=tel]").value
         };
-
         // process the form
-        $.ajax({
-            type: "POST",
-            url: "https://jsonplaceholder.typicode.com/posts",
-            data: formData,
-            dataType: "json",
-            encode: true
-        }).done(function (data) {
-            $('.form-inner').remove()
-            $(".response")
-            // .empty()
-            // .append(JSON.stringify(data, null, 2));
-            $('.response').append('<div class="sucscess"><img src="../images/content/sucscess.png" alt=""><div class="modal_title" style="text-align: center">Заявка принята!</div> <span style="font-size: 24px">И в ближайшее время мы с вами свяжемся</span></div>');
+        fetch("https://jsonplaceholder.typicode.com/posts", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            const formInner = document.querySelector('.form-inner');
+            if (formInner) {
+                formInner.remove();
+            }
+            const responseDiv = document.querySelector('.response');
+            responseDiv.innerHTML = '<div class="sucscess"><img src="../images/content/sucscess.png" alt=""><div class="modal_title" style="text-align: center">Заявка принята!</div> <span style="font-size: 24px">И в ближайшее время мы с вами свяжемся</span></div>';
+        })
+        .catch(error => {
+            console.error('Error:', error);
         });
     });
 });
-
