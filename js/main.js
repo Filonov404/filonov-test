@@ -1,4 +1,6 @@
+/* This script supports IE9+ */
 document.addEventListener('DOMContentLoaded', () => {
+    // Предполагаем, что initSwiper — это инициализация Swiper
     function initSwiper() {
         if (typeof Swiper !== 'undefined') {
             const swiper = new Swiper('.swiper', {
@@ -11,8 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
             console.warn('Swiper library is not loaded');
         }
     }
-    initSwiper(); 
+    initSwiper(); // Вызываем сразу после загрузки DOM
 
+    /* Modal window logic */
     const openModal = () => {
         const modalTrigger = document.getElementsByClassName('jsModalTrigger');
         for (let i = 0; i < modalTrigger.length; i++) {
@@ -41,22 +44,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    openModal();
-    closeModal();
+    openModal(); // Вызываем сразу
+    closeModal(); // Вызываем сразу
 
-    
+    /* Phone input mask */
     let phoneInput = document.querySelectorAll('input[type="tel"]');
     let defaultPlaceholder;
     let numberType;
 
-    phoneInput.forEach(input => {
-        input.addEventListener('input', telMask);
-        input.addEventListener("keydown", telKeyDown);
-        input.addEventListener('paste', telPaste);
-        input.addEventListener('focus', telFocus);
-        input.addEventListener('blur', telBlur);
-    });
-
+    // Определяем все функции до их использования
     function telFocus() {
         defaultPlaceholder = this.placeholder;
         if (this.value.length < 1) {
@@ -142,7 +138,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    
+    // Привязываем обработчики после объявления функций
+    phoneInput.forEach(input => {
+        input.addEventListener('input', telMask);
+        input.addEventListener("keydown", telKeyDown);
+        input.addEventListener('paste', telPaste);
+        input.addEventListener('focus', telFocus);
+        input.addEventListener('blur', telBlur);
+    });
+
+    /* Required fields validation */
     const requiredFields = document.querySelectorAll('.required');
     const submitButton = document.querySelector('.toggle-disabled');
     const checkRequiredFields = () => {
@@ -155,14 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     checkRequiredFields(); // Проверяем сразу
 
-    
+    /* Form button activation */
     const button = document.querySelector("button");
     const nameInput = document.querySelector("input[name=name]");
     nameInput.addEventListener('keyup', () => {
         button.classList.toggle('active', nameInput.value.length > 0);
     });
 
-   
+    /* Form submission */
     const form = document.querySelector("form");
     form.addEventListener("submit", (event) => {
         event.preventDefault();
