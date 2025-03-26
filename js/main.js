@@ -1,58 +1,91 @@
-/* This script supports IE9+ */
-document.addEventListener('DOMContentLoaded', () => {
-    // Предполагаем, что initSwiper — это инициализация Swiper
-    function initSwiper() {
-        if (typeof Swiper !== 'undefined') {
-            const swiper = new Swiper('.swiper', {
-                loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                },
-            });
-        } else {
-            console.warn('Swiper library is not loaded');
-        }
-    }
-    initSwiper(); // Вызываем сразу после загрузки DOM
 
-    /* Modal window logic */
-    const openModal = () => {
-        const modalTrigger = document.getElementsByClassName('jsModalTrigger');
-        for (let i = 0; i < modalTrigger.length; i++) {
-            modalTrigger[i].onclick = function() {
-                const target = this.getAttribute('href').substr(1);
-                const modalWindow = document.getElementById(target);
-                modalWindow.classList ? modalWindow.classList.add('open') : modalWindow.className += ' ' + 'open';
-            };
+document.addEventListener('DOMContentLoaded', function () {
+    new Swiper(".swiper-container", {
+        spaceBetween: 1,
+        slidesPerView: 3,
+        centeredSlides: true,
+        roundLengths: true,
+        loop: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        },
+        breakpoints: {
+            320: {
+                slidesPerView: 2.001
+            },
+            991: {
+                slidesPerView: 3
+            }
         }
-    };
+    });
 
-    const closeModal = () => {
-        const closeButton = document.getElementsByClassName('jsModalClose');
-        const closeOverlay = document.getElementsByClassName('jsOverlay');
-        for (let i = 0; i < closeButton.length; i++) {
-            closeButton[i].onclick = function() {
-                const modalWindow = this.parentNode.parentNode;
-                modalWindow.classList ? modalWindow.classList.remove('open') : modalWindow.className = modalWindow.className.replace(new RegExp('(^|\\b)' + 'open'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-            };
+    (function () {
+        /* Opening modal window function */
+        function openModal() {
+            /* Get trigger element */
+            var modalTrigger = document.getElementsByClassName('jsModalTrigger');
+
+            /* Set onclick event handler for all trigger elements */
+            for (var i = 0; i < modalTrigger.length; i++) {
+                modalTrigger[i].onclick = function () {
+                    var target = this.getAttribute('href').substr(1);
+                    var modalWindow = document.getElementById(target);
+
+                    modalWindow.classList ? modalWindow.classList.add('open') : modalWindow.className += ' ' + 'open';
+                }
+            }
         }
-        for (let i = 0; i < closeOverlay.length; i++) {
-            closeOverlay[i].onclick = function() {
-                const modalWindow = this.parentNode;
-                modalWindow.classList ? modalWindow.classList.remove('open') : modalWindow.className = modalWindow.className.replace(new RegExp('(^|\\b)' + 'open'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
-            };
+
+        function closeModal() {
+            /* Get close button */
+            var closeButton = document.getElementsByClassName('jsModalClose');
+            var closeOverlay = document.getElementsByClassName('jsOverlay');
+
+            /* Set onclick event handler for close buttons */
+            for (var i = 0; i < closeButton.length; i++) {
+                closeButton[i].onclick = function () {
+                    var modalWindow = this.parentNode.parentNode;
+
+                    modalWindow.classList ? modalWindow.classList.remove('open') : modalWindow.className = modalWindow.className.replace(new RegExp('(^|\\b)' + 'open'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+                }
+            }
+
+            /* Set onclick event handler for modal overlay */
+            for (var i = 0; i < closeOverlay.length; i++) {
+                closeOverlay[i].onclick = function () {
+                    var modalWindow = this.parentNode;
+
+                    modalWindow.classList ? modalWindow.classList.remove('open') : modalWindow.className = modalWindow.className.replace(new RegExp('(^|\\b)' + 'open'.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+                }
+            }
+
         }
-    };
 
-    openModal(); // Вызываем сразу
-    closeModal(); // Вызываем сразу
+        /* Handling domready event IE9+ */
+        function ready(fn) {
+            if (document.readyState != 'loading') {
+                fn();
+            } else {
+                document.addEventListener('DOMContentLoaded', fn);
+            }
+        }
 
-    /* Phone input mask */
+        /* Triggering modal window function after dom ready */
+        ready(openModal);
+        ready(closeModal);
+    }());
+
     let phoneInput = document.querySelectorAll('input[type="tel"]');
+    phoneInput.forEach(input => {
+        input.addEventListener('input', telMask);
+        input.addEventListener("keydown", telKeyDown);
+        input.addEventListener('paste', telPaste);
+        input.addEventListener('focus', telFocus);
+        input.addEventListener('blur', telBlur);
+    })
     let defaultPlaceholder;
-    let numberType;
 
-    // Определяем все функции до их использования
     function telFocus() {
         defaultPlaceholder = this.placeholder;
         if (this.value.length < 1) {
@@ -64,7 +97,9 @@ document.addEventListener('DOMContentLoaded', () => {
         this.placeholder = defaultPlaceholder;
     }
 
-    const telMask = function(e) {
+    let numberType;
+
+    function telMask(e) {
         let inpNumValue = getInputNumbers(this);
         let formatedInputValue = "";
         let selectionStart = this.selectionStart;
@@ -72,19 +107,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.data && /\D/g.test(e.data)) {
                 this.value = inpNumValue;
             }
+
             return;
         }
         if (!inpNumValue) {
             return this.value = "";
         }
         if (["7", "8", "9"].indexOf(inpNumValue[0]) > -1) {
+            //russian number
             numberType = "russian";
             if (inpNumValue[0] == "9") {
                 inpNumValue += inpNumValue;
             }
             let firstSymbols = (inpNumValue[0] == "8") ? "+8" : "+7";
             formatedInputValue = firstSymbols + " (";
-            if (inpNumValue.length > 1) {
+            if (formatedInputValue.length > 1) {
                 formatedInputValue += inpNumValue.substring(1, 4);
             }
             if (inpNumValue.length >= 5) {
@@ -97,15 +134,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 formatedInputValue += "-" + inpNumValue.substring(9, 11);
             }
         } else {
+            //not russian number
             numberType = "foreign";
             formatedInputValue = "";
         }
         this.value = formatedInputValue;
-    };
+    }
 
-    const getInputNumbers = (input) => input.value.replace(/\D/g, "");
+    function getInputNumbers(input) {
+        return input.value.replace(/\D/g, "")
+    }
 
-    const telKeyDown = function(e) {
+    function telKeyDown(e) {
         if (numberType == "russian") {
             let selectionStart = this.selectionStart;
             let selectionEnd = this.selectionEnd;
@@ -120,15 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.selectionStart = this.value.length;
             }
             if (e.keyCode == 8 && getInputNumbers(this).length == 1) {
-                this.value = "";
+                this.value = ""
             }
         }
-    };
+    }
 
-    const telPaste = function(e) {
+    function telPaste(e) {
         if (numberType == "russian") {
             let pasted = e.clipboardData || window.clipboardData;
-            let inpNumValue = getInputNumbers(this);
+            inpNumValue = getInputNumbers(this);
             if (pasted) {
                 let pastedText = pasted.getData("text");
                 if ((/\D/g.test(pastedText)) || this.value.length >= 18 && !(this.selectionEnd - this.selectionStart >= pastedText.length)) {
@@ -136,64 +176,64 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
         }
-    };
+    }
 
-    // Привязываем обработчики после объявления функций
-    phoneInput.forEach(input => {
-        input.addEventListener('input', telMask);
-        input.addEventListener("keydown", telKeyDown);
-        input.addEventListener('paste', telPaste);
-        input.addEventListener('focus', telFocus);
-        input.addEventListener('blur', telBlur);
-    });
 
-    /* Required fields validation */
-    const requiredFields = document.querySelectorAll('.required');
-    const submitButton = document.querySelector('.toggle-disabled');
-    const checkRequiredFields = () => {
-        const isDisabled = Array.from(requiredFields).some(field => !field.value.trim());
-        submitButton.disabled = isDisabled;
-    };
-    requiredFields.forEach(field => {
-        field.addEventListener('change', checkRequiredFields);
-        field.addEventListener('keyup', checkRequiredFields);
-    });
-    checkRequiredFields(); // Проверяем сразу
-
-    /* Form button activation */
-    const button = document.querySelector("button");
-    const nameInput = document.querySelector("input[name=name]");
-    nameInput.addEventListener('keyup', () => {
-        button.classList.toggle('active', nameInput.value.length > 0);
-    });
-
-    /* Form submission */
-    const form = document.querySelector("form");
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const formData = {
-            name: form.querySelector("input[name=name]").value,
-            email: form.querySelector("input[name=email]").value,
-            tel: form.querySelector("input[name=tel]").value
-        };
-        fetch("https://jsonplaceholder.typicode.com/posts", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            const formInner = document.querySelector('.form-inner');
-            if (formInner) {
-                formInner.remove();
+    $(document).on('change keyup', '.required', function (e) {
+        let Disabled = true;
+        $(".required").each(function () {
+            let value = this.value
+            if ((value) && (value.trim() != '')) {
+                Disabled = false
+            } else {
+                Disabled = true
+                return false
             }
-            const responseDiv = document.querySelector('.response');
-            responseDiv.innerHTML = '<div class="sucscess"><img src="../images/content/sucscess.png" alt=""><div class="modal_title" style="text-align: center">Заявка принята!</div> <span style="font-size: 24px">И в ближайшее время мы с вами свяжемся</span></div>';
-        })
-        .catch(error => {
-            console.error('Error:', error);
+        });
+
+        if (Disabled) {
+            $('.toggle-disabled').prop("disabled", true);
+        } else {
+            $('.toggle-disabled').prop("disabled", false);
+        }
+    })
+
+
+    $(function () {
+        var button = $("button");
+        var name = $("input[name=name]");
+
+        name.keyup(function () {
+            if (name.val().length > 0) {
+                button.addClass('active');
+            } else {
+                button.removeClass('active');
+            }
+        });
+
+        $("form").submit(function (event) {
+            event.preventDefault();
+
+            var formData = {
+                name: $("input[name=name]").val(),
+                email: $("input[name=email]").val(),
+                tel: $("input[name=tel]").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "https://jsonplaceholder.typicode.com/posts",
+                data: formData,
+                dataType: "json",
+                encode: true
+            }).done(function (data) {
+                $('.form-inner').remove();
+                $(".response")
+                    .empty()
+                    .append(JSON.stringify(data, null, 2));
+                $('.response').append('<div class="sucscess"><img src="../images/content/sucscess.png" alt=""><div class="modal_title" style="text-align: center">Заявка принята!</div> <span style="font-size: 24px">И в ближайшее время мы с вами свяжемся</span></div>');
+            });
         });
     });
+
 });
